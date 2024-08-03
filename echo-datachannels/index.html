@@ -91,11 +91,7 @@
         dcStartButton.style.display = "block"
 
         channel1Subscribed.addEventListener('message', (evt) => {
-            const received = evt.data
-            const receivedTs = performance.now()
-            const sendTs = parseFloat(received)
-            dcSamples.push(receivedTs - sendTs)
-            updateStats(dcSamples, dcStats)
+            console.log(evt.data);
         })
 
         let dcInterval
@@ -113,6 +109,7 @@
 
         function runDc() {
             return setInterval(() => {
+                channel1.send(“test”)
                 channel1.send(performance.now())
             }, 500)
         }
