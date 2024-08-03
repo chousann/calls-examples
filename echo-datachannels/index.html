@@ -55,11 +55,7 @@
         ).then((res) => res.json());
 
         const channel1 = session1.peerConnection.createDataChannel(
-            "channel-one",
-            {
-                negotiated: true,
-                id: channel1resp.dataChannels[0].id,
-            }
+            "channel-one"
         );
 
         const channel1SubscribeResp = await fetch(
