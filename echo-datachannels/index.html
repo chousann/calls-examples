@@ -77,7 +77,11 @@
 
         const channel1Subscribed =
             session2.peerConnection.createDataChannel(
-                "channel-one-subscribed"
+                "channel-one-subscribed",
+                {
+                    negotiated: true,
+                    id: channel1SubscribeResp.dataChannels[0].id,
+                }
             );
 
         dcStartButton.style.display = "block"
