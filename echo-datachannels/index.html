@@ -165,28 +165,10 @@
                     }),
                 }
             ).then((res) => res.json());
-            const connected = new Promise((res, rej) => {
-                // timeout after 5s
-                setTimeout(rej, 5000);
-                const iceConnectionStateChangeHandler = () => {
-                    if (peerConnection.iceConnectionState === "connected") {
-                        peerConnection.removeEventListener(
-                            "iceconnectionstatechange",
-                            iceConnectionStateChangeHandler
-                        );
-                        res(undefined);
-                    }
-                };
-                peerConnection.addEventListener(
-                    "iceconnectionstatechange",
-                    iceConnectionStateChangeHandler
-                );
-            });
 
             // Once both local and remote descriptions are set, the ICE process begins
             await peerConnection.setRemoteDescription(sessionDescription);
             // Wait until the peer connection's iceConnectionState is "connected"
-            await connected;
             return {
                 peerConnection,
                 sessionId,
