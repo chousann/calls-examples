@@ -149,7 +149,7 @@
                 direction: "inactive",
             });
 
-            //const dc = peerConnection.createDataChannel("server-events");
+            const dc = peerConnection.createDataChannel("server-events");
 
             // create an offer and set it as the local description
             await peerConnection.setLocalDescription(
@@ -190,7 +190,7 @@
             return {
                 peerConnection,
                 sessionId,
-                //dc,
+                dc,
             };
         }
     </script>
